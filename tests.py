@@ -12,7 +12,7 @@ hour = now.hour
 min = now.minute
 
 # # 카톡창 이름, (활성화 상태의 열려있는 창)
-chatroom_name = '김승환'
+chatroom_name = '2-8'
 
 
 # # 채팅방에 메시지 전송
@@ -66,14 +66,15 @@ def sendtext():
         kakao_sendtext(chatroom_name,text)
     else : pass
 
-def main():
-    open_chatroom(chatroom_name)  # 채팅방 열기
+# def main():
+#     open_chatroom(chatroom_name)  # 채팅방 열기
 
-    sendtext()    # 메시지 전송
+#     sendtext()    # 메시지 전송
+sendtext()
 
 
-schedule.every().day.at("15:10").do(main)
+# schedule.every().day.at("15:10").do(main)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
