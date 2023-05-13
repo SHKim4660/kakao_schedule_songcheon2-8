@@ -1,4 +1,4 @@
-('C:\\Users\\shkim\\OneDrive\\문서\\GitHub\\kakao_schedule_songcheon2-8\\build\\schedule_prog\\PYZ-00.pyz',
+('C:\\Users\\shkim\\바탕 화면\\PJ\\kakao\\build\\schedule_prog\\PYZ-00.pyz',
  [('_compat_pickle',
    'C:\\Users\\shkim\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_compat_pickle.py',
    'PYMODULE'),

@@ -12,17 +12,17 @@ hour = now.hour
 min = now.minute
 
 # # 카톡창 이름, (활성화 상태의 열려있는 창)
-chatroom_name = '김승환'
+chatroom_name = '송천고 2-8'
 
 
 # # 채팅방에 메시지 전송
 def kakao_sendtext(chatroom_name, text):
+    time.sleep(1)
     # # 핸들 _ 채팅방
     hwndMain = win32gui.FindWindow( None, chatroom_name)
-    time.sleep(10)
     hwndEdit = win32gui.FindWindowEx( hwndMain, None, "RICHEDIT50W", None)
     # hwndListControl = win32gui.FindWindowEx( hwndMain, None, "EVA_VH_ListControl_Dblclk", None)
-    time.sleep(10)
+
     win32api.SendMessage(hwndEdit, win32con.WM_SETTEXT, 0, text)
     SendReturn(hwndEdit)
 
@@ -30,7 +30,7 @@ def kakao_sendtext(chatroom_name, text):
 # # 엔터
 def SendReturn(hwnd):
     win32api.PostMessage(hwnd, win32con.WM_KEYDOWN, win32con.VK_RETURN, 0)
-    time.sleep(10)
+    time.sleep(1)
     win32api.PostMessage(hwnd, win32con.WM_KEYUP, win32con.VK_RETURN, 0)
 
 
@@ -45,11 +45,11 @@ def open_chatroom(chatroom_name):
 
     # # Edit에 검색 _ 입력되어있는 텍스트가 있어도 덮어쓰기됨
     win32api.SendMessage(hwndkakao_edit3, win32con.WM_SETTEXT, 0, chatroom_name)
-    time.sleep(10)   # 안정성 위해 필요
+    time.sleep(1)   # 안정성 위해 필요
     SendReturn(hwndkakao_edit3)
-    time.sleep(10)
+    time.sleep(1)
 
-def sendtext():
+def sendtext(DOW,chatroom_name):
     if DOW == 0:
         text = (f"{year}년 {month}월 {day}일 월요일\n\n화요일 시간표\n-------------\n-문학b\n-진로\n-기하/실수\n-선택F\n-영어\n-선택E\n-선택B\n-------------\n\n준비물\n-영어 : 학습지 다 써오기\n-문학b : 노트 준비하기")
         kakao_sendtext(chatroom_name,text)
@@ -67,13 +67,14 @@ def sendtext():
         kakao_sendtext(chatroom_name,text)
     else : pass
 
+# sendtext()
+
 def main():
     open_chatroom(chatroom_name)  # 채팅방 열기
-    time.sleep(10000)
-    sendtext()    # 메시지 전송
+    time.sleep(5)
+    sendtext(DOW,chatroom_name)    # 메시지 전송
 
-
-schedule.every().day.at("12:23").do(main)
+schedule.every().day.at("17:00").do(main)
 
 while True:
     schedule.run_pending()
