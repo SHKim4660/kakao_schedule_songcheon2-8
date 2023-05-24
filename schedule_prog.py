@@ -4,7 +4,7 @@ import schedule
 
 now = datetime.now()
 
-DOW = now.weekday() #Date Of Week 현재 요일
+day_of_week = now.weekday() #Date Of Week 현재 요일
 year = now.year
 month = now.month
 day = now.day
@@ -49,20 +49,20 @@ def open_chatroom(chatroom_name):
     SendReturn(hwndkakao_edit3)
     time.sleep(1)
 
-def sendtext(DOW,chatroom_name):
-    if DOW == 0:
+def sendtext(day_of_week,chatroom_name):
+    if day_of_week == 0:
         text = (f"{year}년 {month}월 {day}일 월요일\n\n화요일 시간표\n-------------\n-문학b\n-진로\n-기하/실수\n-선택F\n-영어\n-선택E\n-선택B\n-------------\n\n준비물\n-영어 : 학습지 다 써오기\n-문학b : 노트 준비하기")
         kakao_sendtext(chatroom_name,text)
-    elif DOW == 1:
+    elif day_of_week == 1:
         text = (f"{year}년 {month}월 {day}일 화요일\n\n수요일 시간표\n-------------\n-선택E\n-선택C\n-수학\n-빅데이터\n-음악b\n-체육\n-------------\n\n준비물\n-수학 : 학습지 해오기\n-체육 체육복,츄리닝 준비 ")
         kakao_sendtext(chatroom_name,text)
-    elif DOW == 2:
+    elif day_of_week == 2:
         text = (f"{year}년 {month}월 {day}일 수요일\n\n목요일 시간표\n-------------\n-빅데이터\n-선택A\n-수학\n-문학a\n-영어\n-음악a\n-선택D\n-------------\n\n준비물\n-수학 : 학습지 해오기\n-영어 : 학습지 다 써오기")
         kakao_sendtext(chatroom_name,text)
-    elif DOW == 3:
+    elif day_of_week == 3:
         text = (f"{year}년 {month}월 {day}일 목요일\n\n금요일 시간표\n-------------\n-영어\n-문학a\n-선택C\n-선택B\n-창체\n-창체\n-창체\n-------------\n\n준비물\n-영어 : 학습지 다 써오기")
         kakao_sendtext(chatroom_name,text)
-    elif DOW == 4:
+    elif day_of_week == 4:
         text = (f"{year}년 {month}월 {day}일 금요일\n\n월요일 시간표\n-------------\n-체육\n-문학b\n-수학\n-영어\n-선택A\n-선택D\n-선택F\n-------------\n\n준비물\n-체육 : 체육시간에 입을 츄리닝or체육복 가져오기\n-수학 : 학습지 예제 해오기\n-영어 : 학습지 다 써오기\n-문학b : 노트 준비하기")
         kakao_sendtext(chatroom_name,text)
     else : pass
@@ -72,7 +72,7 @@ def sendtext(DOW,chatroom_name):
 def main():
     open_chatroom(chatroom_name)  # 채팅방 열기
     time.sleep(5)
-    sendtext(DOW,chatroom_name)    # 메시지 전송
+    sendtext(day_of_week,chatroom_name)    # 메시지 전송
 
 schedule.every().day.at("17:00").do(main)
 
