@@ -49,7 +49,7 @@ def open_chatroom(chatroom_name):
     SendReturn(hwndkakao_edit3)
     time.sleep(1)
 
-def sendtext(day_of_week,chatroom_name):
+def sendtext(day_of_week,chatroom_name,year,month,day,hour,min):
     if day_of_week == 0:
         text = (f"{year}년 {month}월 {day}일 월요일\n\n화요일 시간표\n-------------\n-문학b\n-진로\n-기하/실수\n-선택F\n-영어\n-선택E\n-선택B\n-------------\n\n준비물\n-영어 : 학습지 다 써오기\n-문학b : 노트 준비하기")
         kakao_sendtext(chatroom_name,text)
@@ -70,9 +70,16 @@ def sendtext(day_of_week,chatroom_name):
 # sendtext()
 
 def main():
+    now = datetime.now()
+    day_of_week = now.weekday()
+    year = now.year
+    month = now.month
+    day = now.day
+    hour = now.hour
+    min = now.minute
     open_chatroom(chatroom_name)  # 채팅방 열기
     time.sleep(5)
-    sendtext(day_of_week,chatroom_name)    # 메시지 전송
+    sendtext(day_of_week,chatroom_name,year,month,day,hour,min)    # 메시지 전송
 
 schedule.every().day.at("17:00").do(main)
 
