@@ -12,7 +12,7 @@ hour = now.hour
 min = now.minute
 
 # # 카톡창 이름, (활성화 상태의 열려있는 창)
-chatroom_name = '송천고 2-8'
+chatroom_name = '김승환'
 
 
 # # 채팅방에 메시지 전송
